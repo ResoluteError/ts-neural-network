@@ -1,5 +1,4 @@
-import { NNNodeObj, NNNode } from "./Node";
-
+import { NNNode } from "./Node";
 
 export interface NNLayerObj {
 

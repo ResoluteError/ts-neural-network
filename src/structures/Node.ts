@@ -84,7 +84,7 @@ export class NNNode implements NNNodeObj{
     }
 
     var sum = 0;
-    for( var i in inputActivations){
+    for( var i = 0; i < inputActivations.length; i++){
       sum += inputActivations[i] * this.weights[i];
     }
     sum += this.bias;
