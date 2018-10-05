@@ -1,4 +1,4 @@
-export interface NodeObj {
+export interface NNNodeObj {
 
   // All weights between nodes from the previews layer leading up to this node 
   weights: number[];
@@ -8,7 +8,7 @@ export interface NodeObj {
 
 }
 
-export class Node implements NodeObj{
+export class NNNode implements NNNodeObj{
 
 
   weights: number[];
@@ -52,7 +52,7 @@ export class Node implements NodeObj{
    * @param {NodeObj} data
    * @memberof Node
    */
-  load(data : NodeObj): void{
+  load(data : NNNodeObj): void{
     this.weights = data.weights;
     this.bias = data.bias;
   }
@@ -63,7 +63,7 @@ export class Node implements NodeObj{
    * @returns {NodeObj}
    * @memberof Node
    */
-  export() : NodeObj{
+  export() : NNNodeObj{
     return {
       weights : this.weights,
       bias: this.bias
