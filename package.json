@@ -1,0 +1,13 @@
+{
+  "name": "neural-networks",
+  "version": "1.0.0",
+  "description": "Basic NN testing with node",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Douglas Reiser",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
