@@ -3,12 +3,14 @@ import { NNLayer, NNLayerObj } from "./Layer";
 export interface NNNetworkObj {
 
   layers : NNLayer[];
+  input?: number[];
 
 }
 
 export class NNNetwork implements NNNetworkObj{
 
   layers : NNLayer[];
+  input?: number[];
 
   constructor(){
     this.layers = [];
@@ -71,6 +73,7 @@ export class NNNetwork implements NNNetworkObj{
 
 
   calculate( inputValues : number[]): number[]{
+    this.input = inputValues;
     for( var i = 0; i < this.layers.length; i++){
       inputValues = this.layers[i].calculateValues(inputValues);
     }

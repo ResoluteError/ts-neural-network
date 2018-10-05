@@ -9,5 +9,6 @@
   "author": "Douglas Reiser",
   "license": "ISC",
   "dependencies": {
+    "perf_hooks": "0.0.1"
   }
 }

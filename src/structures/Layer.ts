@@ -74,4 +74,12 @@ export class NNLayer implements NNLayerObj {
     return resultArr;
   }
 
+  get nodeActivity(){
+    var result = [];
+    for( var node of this.nodes){
+      result.push(node.activity);
+    }
+    return result;
+  }
+
 }

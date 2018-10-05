@@ -17,7 +17,9 @@ export class NNNode implements NNNodeObj{
   bias: number;
 
   // Activation Value
-  value: number;
+  activity: number;
+  zValue : number;
+
 
   /**
    * Creates an instance of Node.
@@ -27,7 +29,8 @@ export class NNNode implements NNNodeObj{
   constructor(){
     this.weights = [];
     this.bias = 0;
-    this.value = 0;
+    this.activity = 0;
+    this.zValue = 0;
   }
 
   /**
@@ -90,8 +93,9 @@ export class NNNode implements NNNodeObj{
       sum += inputActivations[i] * this.weights[i];
     }
     sum += this.bias;
+    this.zValue = sum;
     var result = Sigmoid.calc(sum);
-    this.value = result;
+    this.activity = result;
     return result;
   }
 
