@@ -1,3 +1,5 @@
+import {Sigmoid} from "../math/Sigmoid";
+
 export interface NNNodeObj {
 
   // All weights between nodes from the previews layer leading up to this node 
@@ -88,8 +90,9 @@ export class NNNode implements NNNodeObj{
       sum += inputActivations[i] * this.weights[i];
     }
     sum += this.bias;
-    this.value = sum;
-    return sum;
+    var result = Sigmoid.calc(sum);
+    this.value = result;
+    return result;
   }
 
 }

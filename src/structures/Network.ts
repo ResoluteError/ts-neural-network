@@ -57,4 +57,24 @@ export class NNNetwork implements NNNetworkObj{
     }
   }
 
+  /**
+   * Export the current state of the network
+   *
+   * @returns {NNNetworkObj}
+   * @memberof NNNetwork
+   */
+  export(): NNNetworkObj {
+    return {
+      layers : this.layers
+    }
+  }
+
+
+  calculate( inputValues : number[]): number[]{
+    for( var i = 0; i < this.layers.length; i++){
+      inputValues = this.layers[i].calculateValues(inputValues);
+    }
+    return inputValues;
+  }
+
 }
