@@ -16,9 +16,9 @@ export class NNNode implements NNNodeObj{
   weights: number[];
   bias: number;
 
+  zValue : number;
   // Activation Value
   activity: number;
-  zValue : number;
 
 
   /**

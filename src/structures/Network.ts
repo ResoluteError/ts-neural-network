@@ -67,7 +67,8 @@ export class NNNetwork implements NNNetworkObj{
    */
   export(): NNNetworkObj {
     return {
-      layers : this.layers
+      layers : this.layers,
+      input: this.input
     }
   }
 
