@@ -47,7 +47,7 @@ export class NNNode implements NNNodeObj{
       this.weights.push((Math.random()-0.5) * weightsRange);
     }
 
-    this.bias = (Math.random()-0.5) * weightsRange;
+    this.bias = (Math.random()-0.5) * biasRange;
 
   }
 
