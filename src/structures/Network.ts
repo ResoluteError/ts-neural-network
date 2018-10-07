@@ -50,9 +50,9 @@ export class NNNetwork implements NNNetworkObj{
    * @param {NNLayerObj[]} layers
    * @memberof NNNetwork
    */
-  load( layers: NNLayerObj[]): void{
+  load( networkData: NNNetworkObj): void{
     this.layers = [];
-    for(let layer of layers){
+    for(let layer of networkData.layers){
       var newLayer = new NNLayer();
       newLayer.load(layer);
       this.layers.push(newLayer);

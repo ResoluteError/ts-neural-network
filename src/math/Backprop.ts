@@ -23,7 +23,7 @@ export class Backprop {
    * @readonly
    * @memberof Backprop
    */
-  get costArray() {
+  get costArray() : number[]{
     var costArr = [];
     var output = this.network.layers[ this.network.layers.length -1].nodeActivity;
     if(output.length !== this.expected.length){
@@ -33,6 +33,11 @@ export class Backprop {
       costArr.push(Math.pow(output[i] - this.expected[i],2)/2);
     }
     return costArr;
+  }
+
+  get totalCost() : number{
+    var costArr = this.costArray;
+    return costArr.reduce( (a, b) => a + b);
   }
 
   /**
