@@ -1,5 +1,6 @@
 export class Memo {
 
+  // activationOnCost[layerIndex][nodeIndex] = number
   activationOnCost : number[][];
 
   constructor(){
@@ -20,7 +21,6 @@ export class Memo {
   }
 
   add( value: number, layerIndex: number, nodeIndex : number){
-    //console.log(`Adding ${value} to memo for activityOnCost[${layerIndex}][${nodeIndex}]`);
     if(!this.has(layerIndex, nodeIndex)){
       this.activationOnCost[layerIndex][nodeIndex] = value;
     } else {

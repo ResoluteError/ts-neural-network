@@ -111,21 +111,21 @@ class Backprop {
                     var activityOnCost = this.deltaActivityOnCost(layerIndex, nodeIndex, expectedIndex);
                     memo.add(activityOnCost, layerIndex, nodeIndex);
                 }
-                var weightCount = this.network.layers[layerIndex].nodes[nodeIndex].weights.length;
+                var biasOnZ = this.deltaBiasOnZ();
                 var zOnActivity = this.deltaZOnActivity(layerIndex, nodeIndex);
                 var activityOnCost = memo.get(layerIndex, nodeIndex);
-                var biasOnZ = this.deltaBiasOnZ();
                 var biasOnCost = biasOnZ * zOnActivity * activityOnCost;
                 manipulationMatrix.addBias(biasOnCost, layerIndex, nodeIndex);
                 //console.log(`Effect of increasing bias of layer[${layerIndex}].nodes[${nodeIndex}] on error: ${biasOnCost}`);
+                var weightCount = this.network.layers[layerIndex].nodes[nodeIndex].weights.length;
                 for (var weightIndex = 0; weightIndex < weightCount; weightIndex++) {
                     // every weight connects to a node
-                    var prevNodeIndex = weightIndex;
                     var weightOnZ = this.deltaWeightOnZ(layerIndex, weightIndex);
                     var weightOnCost = weightOnZ * zOnActivity * activityOnCost;
                     //console.log(`Effect of increasing weight of layer[${layerIndex}].nodes[${nodeIndex}].weights[${weightIndex}] on error: ${weightOnCost}`);
                     manipulationMatrix.addWeight(weightOnCost, layerIndex, nodeIndex, weightIndex);
                     if (layerIndex > 0) {
+                        var prevNodeIndex = weightIndex;
                         var prevActivityOnZ = this.deltaPrevActivityOnZ(layerIndex, nodeIndex, prevNodeIndex);
                         var prevActivityOnCost = prevActivityOnZ * zOnActivity * activityOnCost;
                         memo.add(prevActivityOnCost, layerIndex - 1, prevNodeIndex);

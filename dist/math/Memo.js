@@ -17,7 +17,6 @@ class Memo {
         }
     }
     add(value, layerIndex, nodeIndex) {
-        //console.log(`Adding ${value} to memo for activityOnCost[${layerIndex}][${nodeIndex}]`);
         if (!this.has(layerIndex, nodeIndex)) {
             this.activationOnCost[layerIndex][nodeIndex] = value;
         }

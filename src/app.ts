@@ -3,8 +3,6 @@ import bodyParser = require('body-parser');
 import fs = require('fs');
 import { NNNetwork } from './structures/Network';
 import { Mnist } from './importers/Mnist';
-import { ManipulationMatrix } from './structures/Manipulation';
-import { Backprop } from './math/Backprop';
 
 var app = express();
 
@@ -12,8 +10,12 @@ app.use( express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json()); 
 
-app.get( '/', (req, res) => {
+app.get( '/nn-showcase', (req, res) => {
   res.sendFile( __dirname + "/public/index.html");
+});
+
+app.get( '*', (req, res) => {
+  res.sendStatus(404);
 });
 
 app.post( '/api/readNumber/:networkNumber', (req, res) => {
@@ -60,5 +62,9 @@ app.get('/api/mnist/:number', (req, res) => {
 })
 
 app.listen( 8080, () => {
+  console.log("App Listening on port 8080");
+});
+
+app.listen( 8000, () => {
   console.log("App Listening on port 8080");
 });

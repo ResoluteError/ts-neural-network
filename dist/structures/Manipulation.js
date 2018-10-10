@@ -25,17 +25,17 @@ class ManipulationMatrix {
     export() {
         return this.changes;
     }
-    apply(network, biasFactor, weightFactor) {
+    apply(network, biasLearningRate, weightLearningRate) {
         var layerCount = network.layers.length;
         for (var layerIndex = 0; layerIndex < layerCount; layerIndex++) {
             var nodeCount = network.layers[layerIndex].nodes.length;
             for (var nodeIndex = 0; nodeIndex < nodeCount; nodeIndex++) {
                 var weightCount = network.layers[layerIndex].nodes[nodeIndex].weights.length;
                 for (var weightIndex = 0; weightIndex < weightCount; weightIndex++) {
-                    var weightDiff = this.changes[layerIndex][nodeIndex].weights[weightIndex] * weightFactor;
+                    var weightDiff = this.changes[layerIndex][nodeIndex].weights[weightIndex] * weightLearningRate;
                     network.layers[layerIndex].nodes[nodeIndex].weights[weightIndex] -= weightDiff;
                 }
-                var biasDiff = this.changes[layerIndex][nodeIndex].bias * biasFactor;
+                var biasDiff = this.changes[layerIndex][nodeIndex].bias * biasLearningRate;
                 network.layers[layerIndex].nodes[nodeIndex].bias -= biasDiff;
             }
         }
